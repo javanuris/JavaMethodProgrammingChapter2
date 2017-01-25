@@ -4,11 +4,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * Created by User on 24.01.2017.
+ * Класс , отвечает за ввод значений в консоль.
+ * @author Kalenov Nurislam
+ * @version 1.0
  */
 public class InputPart {
 
-    private int result [];
+    private int resultInt [];
+    private String resultString[];
 
     private static ArrayList<String> stringArrayList = new ArrayList<>();//тут храняться значения с Inputstream
 
@@ -16,7 +19,10 @@ public class InputPart {
 
     }
 
-    //Принемает данные с клавы и хранит ее в АрайЛисте
+    /**
+     * Принимает данные с клавы и хранит ее в АрайЛисте
+     *
+     * */
     public void  bufferInput(){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = "";
@@ -36,17 +42,32 @@ public class InputPart {
             System.out.print(" "+stringArrayList.get(i));
         }
     }
-    //Конвертирует ListArray<String> в простой интовый массив
+
+    /**
+     * Конвертирует ListArray<String> в простой интовый массив
+     * @see InputPart
+     * */
     public void getIntDate(){
-        result = new int [stringArrayList.size()] ;
+        resultInt = new int [stringArrayList.size()] ;
        for(int i = 0; i < stringArrayList.size()-1 ; i++){
-           result[i] = Integer.parseInt(stringArrayList.get(i));
+           resultInt[i] = Integer.parseInt(stringArrayList.get(i));
        }
     }
-
-    public int[] getResult() {
-        return result;
+    /**
+     * Конвертирует ListArray<String> в простой стринговый массив
+     * @see InputPart
+     * */
+    public void getStringDate(){
+        for(int i = 0; i < stringArrayList.size() -1 ; i++){
+        resultString = stringArrayList.toArray(new String[i]);
+        }
     }
+
+    public int[] getIntResult() {
+        return resultInt;
+    }
+
+    public String[] getStringResult(){return resultString;}
 
     public static int arraySize(){
         return stringArrayList.size();
